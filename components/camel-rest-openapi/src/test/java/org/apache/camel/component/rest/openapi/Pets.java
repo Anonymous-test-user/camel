@@ -14,21 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.camel.dataformat.protobuf;
+package org.apache.camel.component.rest.openapi;
 
-import java.util.Map;
+import java.util.List;
 
-import com.google.protobuf.Message;
-import org.apache.camel.Converter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Converter(generateLoader = true)
-public final class ProtobufTypeConverter {
+@XmlRootElement(name = "pets")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Pets {
 
-    private ProtobufTypeConverter() {
-    }
+    @XmlElement(name = "Pet")
+    public List<Pet> pets;
 
-    @Converter
-    public static Map<String, Object> toMap(final Message message) {
-        return ProtobufConverter.toMap(message);
-    }
 }
